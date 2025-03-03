@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Confirmation</title>
+</head>
+<body>
+    <h1>Booking Confirmed!</h1>
+    <p>Activity: {{ booking.activity.name }}</p>
+    <p>Date: {{ booking.date }}</p>
+    <p>Time: {{ booking.time }}</p>
+    <p>People: {{ booking.number_of_people }}</p>
+    <p>Total Price: ${{ booking.total_price }}</p>
+    <a href="{% url 'user_bookings' %}">View My Bookings</a>
+</body>
+</html>

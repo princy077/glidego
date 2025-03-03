@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Bookings</title>
+</head>
+<body>
+    <h1>My Activity Bookings</h1>
+    <ul>
+        {% for booking in bookings %}
+            <li>
+                {{ booking.activity.name }} - {{ booking.date }} at {{ booking.time }} 
+                ({{ booking.number_of_people }} people) - <strong>{{ booking.status }}</strong>
+            </li>
+        {% empty %}
+            <p>No bookings yet.</p>
+        {% endfor %}
+    </ul>
+</body>
+</html>

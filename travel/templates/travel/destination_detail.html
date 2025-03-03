@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ destination.name }} - Details</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>{{ destination.name }}</h1>
+        <p><strong>Category:</strong> {{ destination.category }}</p>
+        <p><strong>Description:</strong> {{ destination.description }}</p>
+        <p><strong>Location:</strong> {{ destination.location }}</p>
+
+        <!-- Map Link -->
+        <p>
+            <a href="{% url 'map_view' %}?lat={{ destination.latitude }}&lon={{ destination.longitude }}" class="btn btn-primary">
+                View on Map
+            </a>
+        </p>
+
+        <!-- Recommended Destinations -->
+        <h2>Similar Destinations</h2>
+        <ul>
+            {% for dest in recommended_destinations %}
+                <li>{{ dest.name }} - {{ dest.category }} - 
+                    <a href="{% url 'destination_detail' dest.id %}">Explore</a>
+                </li>
+            {% empty %}
+                <p>No similar destinations found.</p>
+            {% endfor %}
+        </ul>
+        <p>
+            <a href="{% url 'recommend_destinations' destination.id %}" class="btn btn-success">
+                Get Recommendations
+            </a>
+        </p>
+        
+
+        <!-- Recommended Activities -->
+        <h2>Activities at {{ destination.name }}</h2>
+        <ul>
+            {% for activity in recommended_activities %}
+                <li>{{ activity.name }} - {{ activity.activity_type }} - ${{ activity.price }}</li>
+            {% empty %}
+                <p>No activities available for this destination.</p>
+            {% endfor %}
+        </ul>
+
+        <!-- Back to Destinations -->
+        <p><a href="{% url 'destinations' %}" class="btn btn-secondary">Back to Destinations</a></p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

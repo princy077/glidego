@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+</head>
+<body>
+    <h1>Search Destinations</h1>
+    
+    <form method="GET" action="{% url 'search_destinations' %}">
+        <input type="text" name="query" placeholder="Search by name" value="{{ request.GET.query }}">
+        <select name="category">
+            <option value="">All Categories</option>
+            <option value="beach">Beach</option>
+            <option value="mountain">Mountain</option>
+            <option value="historical">Historical</option>
+            <option value="city">City</option>
+            <option value="adventure">Adventure</option>
+        </select>
+        <select name="activity">
+            <option value="">All Activities</option>
+            <option value="boating">Boating</option>
+            <option value="kayaking">Kayaking</option>
+            <option value="trekking">Trekking</option>
+            <option value="sightseeing">Sightseeing</option>
+            <option value="camping">Camping</option>
+        </select>
+        <button type="submit">Search</button>
+    </form>
+
+
+    {% if destinations is not None %}  <!-- ✅ Show results only if a search was made -->
+        <h2>Results:</h2>
+        <ul>
+            {% for destination in destinations %}
+                <li>{{ destination.name }} - {{ destination.category }} - 
+                    <a href="{{ destination.map_link }}">View on Map</a>
+                </li>
+            {% empty %}
+                <li>No destinations found.</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+   
+</body>
+</html>

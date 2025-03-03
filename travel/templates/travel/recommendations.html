@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommended Destinations</title>
+</head>
+<body>
+    <h1>Recommended Destinations</h1>
+
+    {% if recommended_destinations %}  <!-- ✅ Use the correct variable -->
+        <ul>
+            {% for destination in recommended_destinations %}
+                <li>{{ destination.name }} - {{ destination.category }} - 
+                    <a href="{% url 'map_view' %}?lat={{ destination.latitude }}&lon={{ destination.longitude }}">View on Map</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No recommendations available. Update your preferences!</p>
+    {% endif %}
+</body>
+</html>
+

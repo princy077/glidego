@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Preferences</title>
+</head>
+<body>
+    <h1>Set Your Travel Preferences</h1>
+    <form method="POST">
+        {% csrf_token %}
+
+        <h3>Select Categories:</h3>
+        <label><input type="checkbox" name="categories" value="beach"> Beach</label>
+        <label><input type="checkbox" name="categories" value="mountain"> Mountain</label>
+        <label><input type="checkbox" name="categories" value="historical"> Historical</label>
+        <label><input type="checkbox" name="categories" value="city"> City</label>
+        <label><input type="checkbox" name="categories" value="adventure"> Adventure</label>
+
+        <h3>Select Activities:</h3>
+        <label><input type="checkbox" name="activities" value="boating"> Boating</label>
+        <label><input type="checkbox" name="activities" value="kayaking"> Kayaking</label>
+        <label><input type="checkbox" name="activities" value="trekking"> Trekking</label>
+        <label><input type="checkbox" name="activities" value="sightseeing"> Sightseeing</label>
+        <label><input type="checkbox" name="activities" value="camping"> Camping</label>
+
+        <br><br>
+        <button type="submit">Save Preferences</button>
+    </form>
+</body>
+</html>
